@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package raft;
+option java_package = "com.dinghai.raft.proto";
+option java_outer_classname = "RaftMessage";
+
+message VoteRequest{
+  uint64 term = 1;
+  uint64 server_id = 2;
+  uint64 last_log_index = 3;
+  uint64 last_log_term = 4;
+}
+
+message VoteResponse{
+  uint64 term = 1;
+  bool voteGranted = 2;
+}
+
+message LogEntry {
+  uint64 term = 1;
+  uint64 index = 2;
+  bytes data = 3;
+};
+
+message AppendEntityRequest{
+  uint64 term = 1;
+  uint64 leader_id = 2;
+  uint64 prev_log_index = 3;
+  uint64 prev_log_term = 4;
+  repeated LogEntry logs = 5;
+}
+
+message AppendEntityResponse{
+  uint64 term = 1;
+  bool success = 2;
+}
