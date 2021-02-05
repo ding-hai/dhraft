@@ -1,6 +1,6 @@
-package com.dinghai.raft.service;
+package com.dinghai.raft.core.service;
 
-import com.dinghai.raft.proto.RaftMessage;
+import com.dinghai.raft.core.proto.RaftMessage;
 
 public interface RaftElectionService {
     public RaftMessage.VoteResponse vote(RaftMessage.VoteRequest voteRequest);
