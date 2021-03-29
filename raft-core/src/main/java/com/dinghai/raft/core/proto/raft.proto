@@ -1,8 +1,28 @@
 syntax = "proto3";
 
 package raft;
-option java_package = "com.dinghai.raft.proto";
+option java_package = "com.dinghai.raft.core.proto";
 option java_outer_classname = "RaftMessage";
+
+enum ResCode {
+  RES_CODE_SUCCESS = 0;
+  RES_CODE_FAIL = 1;
+  RES_CODE_NOT_LEADER = 2;
+}
+
+message Endpoint{
+  string host = 1;
+  uint32 port = 2;
+}
+
+message Server{
+  uint32 server_id = 1;
+  Endpoint endpoint = 2;
+}
+
+message Configuration{
+  repeated Server servers = 1;
+}
 
 message VoteRequest{
   uint64 term = 1;
@@ -13,7 +33,7 @@ message VoteRequest{
 
 message VoteResponse{
   uint64 term = 1;
-  bool voteGranted = 2;
+  bool granted = 2;
 }
 
 message LogEntry {
@@ -23,14 +43,16 @@ message LogEntry {
 };
 
 message AppendEntityRequest{
-  uint64 term = 1;
-  uint64 leader_id = 2;
-  uint64 prev_log_index = 3;
-  uint64 prev_log_term = 4;
-  repeated LogEntry logs = 5;
+  uint32 server_id = 1;
+  uint64 term = 2;
+  uint64 leader_id = 3;
+  uint64 prev_log_index = 4;
+  uint64 prev_log_term = 5;
+  repeated LogEntry entries = 6;
 }
 
 message AppendEntityResponse{
-  uint64 term = 1;
-  bool success = 2;
+  ResCode res_code = 1;
+  uint64 term = 2;
+  uint64 last_log_index = 3;
 }

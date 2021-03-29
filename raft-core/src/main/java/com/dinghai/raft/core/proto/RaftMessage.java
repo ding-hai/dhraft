@@ -14,6 +14,2245 @@ public final class RaftMessage {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code raft.ResCode}
+   */
+  public enum ResCode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>RES_CODE_SUCCESS = 0;</code>
+     */
+    RES_CODE_SUCCESS(0),
+    /**
+     * <code>RES_CODE_FAIL = 1;</code>
+     */
+    RES_CODE_FAIL(1),
+    /**
+     * <code>RES_CODE_NOT_LEADER = 2;</code>
+     */
+    RES_CODE_NOT_LEADER(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>RES_CODE_SUCCESS = 0;</code>
+     */
+    public static final int RES_CODE_SUCCESS_VALUE = 0;
+    /**
+     * <code>RES_CODE_FAIL = 1;</code>
+     */
+    public static final int RES_CODE_FAIL_VALUE = 1;
+    /**
+     * <code>RES_CODE_NOT_LEADER = 2;</code>
+     */
+    public static final int RES_CODE_NOT_LEADER_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ResCode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static ResCode forNumber(int value) {
+      switch (value) {
+        case 0: return RES_CODE_SUCCESS;
+        case 1: return RES_CODE_FAIL;
+        case 2: return RES_CODE_NOT_LEADER;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ResCode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ResCode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ResCode>() {
+            public ResCode findValueByNumber(int number) {
+              return ResCode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.dinghai.raft.core.proto.RaftMessage.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ResCode[] VALUES = values();
+
+    public static ResCode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ResCode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:raft.ResCode)
+  }
+
+  public interface EndpointOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:raft.Endpoint)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string host = 1;</code>
+     * @return The host.
+     */
+    java.lang.String getHost();
+    /**
+     * <code>string host = 1;</code>
+     * @return The bytes for host.
+     */
+    com.google.protobuf.ByteString
+        getHostBytes();
+
+    /**
+     * <code>uint32 port = 2;</code>
+     * @return The port.
+     */
+    int getPort();
+  }
+  /**
+   * Protobuf type {@code raft.Endpoint}
+   */
+  public static final class Endpoint extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:raft.Endpoint)
+      EndpointOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Endpoint.newBuilder() to construct.
+    private Endpoint(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Endpoint() {
+      host_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Endpoint();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Endpoint(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              host_ = s;
+              break;
+            }
+            case 16: {
+
+              port_ = input.readUInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Endpoint_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Endpoint_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.dinghai.raft.core.proto.RaftMessage.Endpoint.class, com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder.class);
+    }
+
+    public static final int HOST_FIELD_NUMBER = 1;
+    private volatile java.lang.Object host_;
+    /**
+     * <code>string host = 1;</code>
+     * @return The host.
+     */
+    @java.lang.Override
+    public java.lang.String getHost() {
+      java.lang.Object ref = host_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        host_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string host = 1;</code>
+     * @return The bytes for host.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getHostBytes() {
+      java.lang.Object ref = host_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        host_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PORT_FIELD_NUMBER = 2;
+    private int port_;
+    /**
+     * <code>uint32 port = 2;</code>
+     * @return The port.
+     */
+    @java.lang.Override
+    public int getPort() {
+      return port_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getHostBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, host_);
+      }
+      if (port_ != 0) {
+        output.writeUInt32(2, port_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getHostBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, host_);
+      }
+      if (port_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, port_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.Endpoint)) {
+        return super.equals(obj);
+      }
+      com.dinghai.raft.core.proto.RaftMessage.Endpoint other = (com.dinghai.raft.core.proto.RaftMessage.Endpoint) obj;
+
+      if (!getHost()
+          .equals(other.getHost())) return false;
+      if (getPort()
+          != other.getPort()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + HOST_FIELD_NUMBER;
+      hash = (53 * hash) + getHost().hashCode();
+      hash = (37 * hash) + PORT_FIELD_NUMBER;
+      hash = (53 * hash) + getPort();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.Endpoint prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code raft.Endpoint}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:raft.Endpoint)
+        com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Endpoint_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Endpoint_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.dinghai.raft.core.proto.RaftMessage.Endpoint.class, com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder.class);
+      }
+
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.Endpoint.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        host_ = "";
+
+        port_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Endpoint_descriptor;
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Endpoint getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.Endpoint.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Endpoint build() {
+        com.dinghai.raft.core.proto.RaftMessage.Endpoint result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Endpoint buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.Endpoint result = new com.dinghai.raft.core.proto.RaftMessage.Endpoint(this);
+        result.host_ = host_;
+        result.port_ = port_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.Endpoint) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.Endpoint)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.Endpoint other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.Endpoint.getDefaultInstance()) return this;
+        if (!other.getHost().isEmpty()) {
+          host_ = other.host_;
+          onChanged();
+        }
+        if (other.getPort() != 0) {
+          setPort(other.getPort());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.dinghai.raft.core.proto.RaftMessage.Endpoint parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.Endpoint) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object host_ = "";
+      /**
+       * <code>string host = 1;</code>
+       * @return The host.
+       */
+      public java.lang.String getHost() {
+        java.lang.Object ref = host_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          host_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string host = 1;</code>
+       * @return The bytes for host.
+       */
+      public com.google.protobuf.ByteString
+          getHostBytes() {
+        java.lang.Object ref = host_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          host_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string host = 1;</code>
+       * @param value The host to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHost(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        host_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string host = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHost() {
+        
+        host_ = getDefaultInstance().getHost();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string host = 1;</code>
+       * @param value The bytes for host to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHostBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        host_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int port_ ;
+      /**
+       * <code>uint32 port = 2;</code>
+       * @return The port.
+       */
+      @java.lang.Override
+      public int getPort() {
+        return port_;
+      }
+      /**
+       * <code>uint32 port = 2;</code>
+       * @param value The port to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPort(int value) {
+        
+        port_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 port = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPort() {
+        
+        port_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:raft.Endpoint)
+    }
+
+    // @@protoc_insertion_point(class_scope:raft.Endpoint)
+    private static final com.dinghai.raft.core.proto.RaftMessage.Endpoint DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.Endpoint();
+    }
+
+    public static com.dinghai.raft.core.proto.RaftMessage.Endpoint getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Endpoint>
+        PARSER = new com.google.protobuf.AbstractParser<Endpoint>() {
+      @java.lang.Override
+      public Endpoint parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Endpoint(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Endpoint> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Endpoint> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.Endpoint getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ServerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:raft.Server)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>uint32 server_id = 1;</code>
+     * @return The serverId.
+     */
+    int getServerId();
+
+    /**
+     * <code>.raft.Endpoint endpoint = 2;</code>
+     * @return Whether the endpoint field is set.
+     */
+    boolean hasEndpoint();
+    /**
+     * <code>.raft.Endpoint endpoint = 2;</code>
+     * @return The endpoint.
+     */
+    com.dinghai.raft.core.proto.RaftMessage.Endpoint getEndpoint();
+    /**
+     * <code>.raft.Endpoint endpoint = 2;</code>
+     */
+    com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder getEndpointOrBuilder();
+  }
+  /**
+   * Protobuf type {@code raft.Server}
+   */
+  public static final class Server extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:raft.Server)
+      ServerOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Server.newBuilder() to construct.
+    private Server(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Server() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Server();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Server(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              serverId_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder subBuilder = null;
+              if (endpoint_ != null) {
+                subBuilder = endpoint_.toBuilder();
+              }
+              endpoint_ = input.readMessage(com.dinghai.raft.core.proto.RaftMessage.Endpoint.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(endpoint_);
+                endpoint_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Server_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Server_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.dinghai.raft.core.proto.RaftMessage.Server.class, com.dinghai.raft.core.proto.RaftMessage.Server.Builder.class);
+    }
+
+    public static final int SERVER_ID_FIELD_NUMBER = 1;
+    private int serverId_;
+    /**
+     * <code>uint32 server_id = 1;</code>
+     * @return The serverId.
+     */
+    @java.lang.Override
+    public int getServerId() {
+      return serverId_;
+    }
+
+    public static final int ENDPOINT_FIELD_NUMBER = 2;
+    private com.dinghai.raft.core.proto.RaftMessage.Endpoint endpoint_;
+    /**
+     * <code>.raft.Endpoint endpoint = 2;</code>
+     * @return Whether the endpoint field is set.
+     */
+    @java.lang.Override
+    public boolean hasEndpoint() {
+      return endpoint_ != null;
+    }
+    /**
+     * <code>.raft.Endpoint endpoint = 2;</code>
+     * @return The endpoint.
+     */
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.Endpoint getEndpoint() {
+      return endpoint_ == null ? com.dinghai.raft.core.proto.RaftMessage.Endpoint.getDefaultInstance() : endpoint_;
+    }
+    /**
+     * <code>.raft.Endpoint endpoint = 2;</code>
+     */
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder getEndpointOrBuilder() {
+      return getEndpoint();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (serverId_ != 0) {
+        output.writeUInt32(1, serverId_);
+      }
+      if (endpoint_ != null) {
+        output.writeMessage(2, getEndpoint());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (serverId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, serverId_);
+      }
+      if (endpoint_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getEndpoint());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.Server)) {
+        return super.equals(obj);
+      }
+      com.dinghai.raft.core.proto.RaftMessage.Server other = (com.dinghai.raft.core.proto.RaftMessage.Server) obj;
+
+      if (getServerId()
+          != other.getServerId()) return false;
+      if (hasEndpoint() != other.hasEndpoint()) return false;
+      if (hasEndpoint()) {
+        if (!getEndpoint()
+            .equals(other.getEndpoint())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SERVER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId();
+      if (hasEndpoint()) {
+        hash = (37 * hash) + ENDPOINT_FIELD_NUMBER;
+        hash = (53 * hash) + getEndpoint().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Server parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.Server prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code raft.Server}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:raft.Server)
+        com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Server_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Server_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.dinghai.raft.core.proto.RaftMessage.Server.class, com.dinghai.raft.core.proto.RaftMessage.Server.Builder.class);
+      }
+
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.Server.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        serverId_ = 0;
+
+        if (endpointBuilder_ == null) {
+          endpoint_ = null;
+        } else {
+          endpoint_ = null;
+          endpointBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Server_descriptor;
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Server getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.Server.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Server build() {
+        com.dinghai.raft.core.proto.RaftMessage.Server result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Server buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.Server result = new com.dinghai.raft.core.proto.RaftMessage.Server(this);
+        result.serverId_ = serverId_;
+        if (endpointBuilder_ == null) {
+          result.endpoint_ = endpoint_;
+        } else {
+          result.endpoint_ = endpointBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.Server) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.Server)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.Server other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.Server.getDefaultInstance()) return this;
+        if (other.getServerId() != 0) {
+          setServerId(other.getServerId());
+        }
+        if (other.hasEndpoint()) {
+          mergeEndpoint(other.getEndpoint());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.dinghai.raft.core.proto.RaftMessage.Server parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.Server) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int serverId_ ;
+      /**
+       * <code>uint32 server_id = 1;</code>
+       * @return The serverId.
+       */
+      @java.lang.Override
+      public int getServerId() {
+        return serverId_;
+      }
+      /**
+       * <code>uint32 server_id = 1;</code>
+       * @param value The serverId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServerId(int value) {
+        
+        serverId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 server_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServerId() {
+        
+        serverId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.dinghai.raft.core.proto.RaftMessage.Endpoint endpoint_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.dinghai.raft.core.proto.RaftMessage.Endpoint, com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder, com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder> endpointBuilder_;
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       * @return Whether the endpoint field is set.
+       */
+      public boolean hasEndpoint() {
+        return endpointBuilder_ != null || endpoint_ != null;
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       * @return The endpoint.
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.Endpoint getEndpoint() {
+        if (endpointBuilder_ == null) {
+          return endpoint_ == null ? com.dinghai.raft.core.proto.RaftMessage.Endpoint.getDefaultInstance() : endpoint_;
+        } else {
+          return endpointBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      public Builder setEndpoint(com.dinghai.raft.core.proto.RaftMessage.Endpoint value) {
+        if (endpointBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          endpoint_ = value;
+          onChanged();
+        } else {
+          endpointBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      public Builder setEndpoint(
+          com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder builderForValue) {
+        if (endpointBuilder_ == null) {
+          endpoint_ = builderForValue.build();
+          onChanged();
+        } else {
+          endpointBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      public Builder mergeEndpoint(com.dinghai.raft.core.proto.RaftMessage.Endpoint value) {
+        if (endpointBuilder_ == null) {
+          if (endpoint_ != null) {
+            endpoint_ =
+              com.dinghai.raft.core.proto.RaftMessage.Endpoint.newBuilder(endpoint_).mergeFrom(value).buildPartial();
+          } else {
+            endpoint_ = value;
+          }
+          onChanged();
+        } else {
+          endpointBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      public Builder clearEndpoint() {
+        if (endpointBuilder_ == null) {
+          endpoint_ = null;
+          onChanged();
+        } else {
+          endpoint_ = null;
+          endpointBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder getEndpointBuilder() {
+        
+        onChanged();
+        return getEndpointFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder getEndpointOrBuilder() {
+        if (endpointBuilder_ != null) {
+          return endpointBuilder_.getMessageOrBuilder();
+        } else {
+          return endpoint_ == null ?
+              com.dinghai.raft.core.proto.RaftMessage.Endpoint.getDefaultInstance() : endpoint_;
+        }
+      }
+      /**
+       * <code>.raft.Endpoint endpoint = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.dinghai.raft.core.proto.RaftMessage.Endpoint, com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder, com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder> 
+          getEndpointFieldBuilder() {
+        if (endpointBuilder_ == null) {
+          endpointBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.dinghai.raft.core.proto.RaftMessage.Endpoint, com.dinghai.raft.core.proto.RaftMessage.Endpoint.Builder, com.dinghai.raft.core.proto.RaftMessage.EndpointOrBuilder>(
+                  getEndpoint(),
+                  getParentForChildren(),
+                  isClean());
+          endpoint_ = null;
+        }
+        return endpointBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:raft.Server)
+    }
+
+    // @@protoc_insertion_point(class_scope:raft.Server)
+    private static final com.dinghai.raft.core.proto.RaftMessage.Server DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.Server();
+    }
+
+    public static com.dinghai.raft.core.proto.RaftMessage.Server getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Server>
+        PARSER = new com.google.protobuf.AbstractParser<Server>() {
+      @java.lang.Override
+      public Server parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Server(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Server> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Server> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.Server getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ConfigurationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:raft.Configuration)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    java.util.List<com.dinghai.raft.core.proto.RaftMessage.Server> 
+        getServersList();
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    com.dinghai.raft.core.proto.RaftMessage.Server getServers(int index);
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    int getServersCount();
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    java.util.List<? extends com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder> 
+        getServersOrBuilderList();
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder getServersOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code raft.Configuration}
+   */
+  public static final class Configuration extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:raft.Configuration)
+      ConfigurationOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use Configuration.newBuilder() to construct.
+    private Configuration(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private Configuration() {
+      servers_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new Configuration();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Configuration(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                servers_ = new java.util.ArrayList<com.dinghai.raft.core.proto.RaftMessage.Server>();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              servers_.add(
+                  input.readMessage(com.dinghai.raft.core.proto.RaftMessage.Server.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          servers_ = java.util.Collections.unmodifiableList(servers_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Configuration_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Configuration_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.dinghai.raft.core.proto.RaftMessage.Configuration.class, com.dinghai.raft.core.proto.RaftMessage.Configuration.Builder.class);
+    }
+
+    public static final int SERVERS_FIELD_NUMBER = 1;
+    private java.util.List<com.dinghai.raft.core.proto.RaftMessage.Server> servers_;
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.dinghai.raft.core.proto.RaftMessage.Server> getServersList() {
+      return servers_;
+    }
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder> 
+        getServersOrBuilderList() {
+      return servers_;
+    }
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    @java.lang.Override
+    public int getServersCount() {
+      return servers_.size();
+    }
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.Server getServers(int index) {
+      return servers_.get(index);
+    }
+    /**
+     * <code>repeated .raft.Server servers = 1;</code>
+     */
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder getServersOrBuilder(
+        int index) {
+      return servers_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < servers_.size(); i++) {
+        output.writeMessage(1, servers_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (int i = 0; i < servers_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, servers_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.Configuration)) {
+        return super.equals(obj);
+      }
+      com.dinghai.raft.core.proto.RaftMessage.Configuration other = (com.dinghai.raft.core.proto.RaftMessage.Configuration) obj;
+
+      if (!getServersList()
+          .equals(other.getServersList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getServersCount() > 0) {
+        hash = (37 * hash) + SERVERS_FIELD_NUMBER;
+        hash = (53 * hash) + getServersList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.Configuration prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code raft.Configuration}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:raft.Configuration)
+        com.dinghai.raft.core.proto.RaftMessage.ConfigurationOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Configuration_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Configuration_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.dinghai.raft.core.proto.RaftMessage.Configuration.class, com.dinghai.raft.core.proto.RaftMessage.Configuration.Builder.class);
+      }
+
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.Configuration.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getServersFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (serversBuilder_ == null) {
+          servers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          serversBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_Configuration_descriptor;
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Configuration getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.Configuration.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Configuration build() {
+        com.dinghai.raft.core.proto.RaftMessage.Configuration result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.Configuration buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.Configuration result = new com.dinghai.raft.core.proto.RaftMessage.Configuration(this);
+        int from_bitField0_ = bitField0_;
+        if (serversBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            servers_ = java.util.Collections.unmodifiableList(servers_);
+            bitField0_ = (bitField0_ & ~0x00000001);
+          }
+          result.servers_ = servers_;
+        } else {
+          result.servers_ = serversBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.Configuration) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.Configuration)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.Configuration other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.Configuration.getDefaultInstance()) return this;
+        if (serversBuilder_ == null) {
+          if (!other.servers_.isEmpty()) {
+            if (servers_.isEmpty()) {
+              servers_ = other.servers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+            } else {
+              ensureServersIsMutable();
+              servers_.addAll(other.servers_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.servers_.isEmpty()) {
+            if (serversBuilder_.isEmpty()) {
+              serversBuilder_.dispose();
+              serversBuilder_ = null;
+              servers_ = other.servers_;
+              bitField0_ = (bitField0_ & ~0x00000001);
+              serversBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getServersFieldBuilder() : null;
+            } else {
+              serversBuilder_.addAllMessages(other.servers_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.dinghai.raft.core.proto.RaftMessage.Configuration parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.Configuration) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.util.List<com.dinghai.raft.core.proto.RaftMessage.Server> servers_ =
+        java.util.Collections.emptyList();
+      private void ensureServersIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          servers_ = new java.util.ArrayList<com.dinghai.raft.core.proto.RaftMessage.Server>(servers_);
+          bitField0_ |= 0x00000001;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.dinghai.raft.core.proto.RaftMessage.Server, com.dinghai.raft.core.proto.RaftMessage.Server.Builder, com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder> serversBuilder_;
+
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public java.util.List<com.dinghai.raft.core.proto.RaftMessage.Server> getServersList() {
+        if (serversBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(servers_);
+        } else {
+          return serversBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public int getServersCount() {
+        if (serversBuilder_ == null) {
+          return servers_.size();
+        } else {
+          return serversBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.Server getServers(int index) {
+        if (serversBuilder_ == null) {
+          return servers_.get(index);
+        } else {
+          return serversBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder setServers(
+          int index, com.dinghai.raft.core.proto.RaftMessage.Server value) {
+        if (serversBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureServersIsMutable();
+          servers_.set(index, value);
+          onChanged();
+        } else {
+          serversBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder setServers(
+          int index, com.dinghai.raft.core.proto.RaftMessage.Server.Builder builderForValue) {
+        if (serversBuilder_ == null) {
+          ensureServersIsMutable();
+          servers_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          serversBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder addServers(com.dinghai.raft.core.proto.RaftMessage.Server value) {
+        if (serversBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureServersIsMutable();
+          servers_.add(value);
+          onChanged();
+        } else {
+          serversBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder addServers(
+          int index, com.dinghai.raft.core.proto.RaftMessage.Server value) {
+        if (serversBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureServersIsMutable();
+          servers_.add(index, value);
+          onChanged();
+        } else {
+          serversBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder addServers(
+          com.dinghai.raft.core.proto.RaftMessage.Server.Builder builderForValue) {
+        if (serversBuilder_ == null) {
+          ensureServersIsMutable();
+          servers_.add(builderForValue.build());
+          onChanged();
+        } else {
+          serversBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder addServers(
+          int index, com.dinghai.raft.core.proto.RaftMessage.Server.Builder builderForValue) {
+        if (serversBuilder_ == null) {
+          ensureServersIsMutable();
+          servers_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          serversBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder addAllServers(
+          java.lang.Iterable<? extends com.dinghai.raft.core.proto.RaftMessage.Server> values) {
+        if (serversBuilder_ == null) {
+          ensureServersIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, servers_);
+          onChanged();
+        } else {
+          serversBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder clearServers() {
+        if (serversBuilder_ == null) {
+          servers_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+        } else {
+          serversBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public Builder removeServers(int index) {
+        if (serversBuilder_ == null) {
+          ensureServersIsMutable();
+          servers_.remove(index);
+          onChanged();
+        } else {
+          serversBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.Server.Builder getServersBuilder(
+          int index) {
+        return getServersFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder getServersOrBuilder(
+          int index) {
+        if (serversBuilder_ == null) {
+          return servers_.get(index);  } else {
+          return serversBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public java.util.List<? extends com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder> 
+           getServersOrBuilderList() {
+        if (serversBuilder_ != null) {
+          return serversBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(servers_);
+        }
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.Server.Builder addServersBuilder() {
+        return getServersFieldBuilder().addBuilder(
+            com.dinghai.raft.core.proto.RaftMessage.Server.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public com.dinghai.raft.core.proto.RaftMessage.Server.Builder addServersBuilder(
+          int index) {
+        return getServersFieldBuilder().addBuilder(
+            index, com.dinghai.raft.core.proto.RaftMessage.Server.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .raft.Server servers = 1;</code>
+       */
+      public java.util.List<com.dinghai.raft.core.proto.RaftMessage.Server.Builder> 
+           getServersBuilderList() {
+        return getServersFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.dinghai.raft.core.proto.RaftMessage.Server, com.dinghai.raft.core.proto.RaftMessage.Server.Builder, com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder> 
+          getServersFieldBuilder() {
+        if (serversBuilder_ == null) {
+          serversBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.dinghai.raft.core.proto.RaftMessage.Server, com.dinghai.raft.core.proto.RaftMessage.Server.Builder, com.dinghai.raft.core.proto.RaftMessage.ServerOrBuilder>(
+                  servers_,
+                  ((bitField0_ & 0x00000001) != 0),
+                  getParentForChildren(),
+                  isClean());
+          servers_ = null;
+        }
+        return serversBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:raft.Configuration)
+    }
+
+    // @@protoc_insertion_point(class_scope:raft.Configuration)
+    private static final com.dinghai.raft.core.proto.RaftMessage.Configuration DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.Configuration();
+    }
+
+    public static com.dinghai.raft.core.proto.RaftMessage.Configuration getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Configuration>
+        PARSER = new com.google.protobuf.AbstractParser<Configuration>() {
+      @java.lang.Override
+      public Configuration parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new Configuration(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Configuration> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Configuration> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.dinghai.raft.core.proto.RaftMessage.Configuration getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface VoteRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:raft.VoteRequest)
       com.google.protobuf.MessageOrBuilder {
@@ -128,15 +2367,15 @@ public final class RaftMessage {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return RaftMessage.internal_static_raft_VoteRequest_descriptor;
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return RaftMessage.internal_static_raft_VoteRequest_fieldAccessorTable
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RaftMessage.VoteRequest.class, RaftMessage.VoteRequest.Builder.class);
+              com.dinghai.raft.core.proto.RaftMessage.VoteRequest.class, com.dinghai.raft.core.proto.RaftMessage.VoteRequest.Builder.class);
     }
 
     public static final int TERM_FIELD_NUMBER = 1;
@@ -244,10 +2483,10 @@ public final class RaftMessage {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof RaftMessage.VoteRequest)) {
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.VoteRequest)) {
         return super.equals(obj);
       }
-      RaftMessage.VoteRequest other = (RaftMessage.VoteRequest) obj;
+      com.dinghai.raft.core.proto.RaftMessage.VoteRequest other = (com.dinghai.raft.core.proto.RaftMessage.VoteRequest) obj;
 
       if (getTerm()
           != other.getTerm()) return false;
@@ -285,69 +2524,69 @@ public final class RaftMessage {
       return hash;
     }
 
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.VoteRequest parseFrom(byte[] data)
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.VoteRequest parseFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.VoteRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static RaftMessage.VoteRequest parseDelimitedFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.VoteRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -360,7 +2599,7 @@ public final class RaftMessage {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(RaftMessage.VoteRequest prototype) {
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.VoteRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -381,21 +2620,21 @@ public final class RaftMessage {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:raft.VoteRequest)
-        RaftMessage.VoteRequestOrBuilder {
+        com.dinghai.raft.core.proto.RaftMessage.VoteRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return RaftMessage.internal_static_raft_VoteRequest_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return RaftMessage.internal_static_raft_VoteRequest_fieldAccessorTable
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RaftMessage.VoteRequest.class, RaftMessage.VoteRequest.Builder.class);
+                com.dinghai.raft.core.proto.RaftMessage.VoteRequest.class, com.dinghai.raft.core.proto.RaftMessage.VoteRequest.Builder.class);
       }
 
-      // Construct using com.dinghai.raft.proto.RaftMessage.VoteRequest.newBuilder()
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.VoteRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -427,17 +2666,17 @@ public final class RaftMessage {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return RaftMessage.internal_static_raft_VoteRequest_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteRequest_descriptor;
       }
 
       @java.lang.Override
-      public RaftMessage.VoteRequest getDefaultInstanceForType() {
-        return RaftMessage.VoteRequest.getDefaultInstance();
+      public com.dinghai.raft.core.proto.RaftMessage.VoteRequest getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.VoteRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public RaftMessage.VoteRequest build() {
-        RaftMessage.VoteRequest result = buildPartial();
+      public com.dinghai.raft.core.proto.RaftMessage.VoteRequest build() {
+        com.dinghai.raft.core.proto.RaftMessage.VoteRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -445,8 +2684,8 @@ public final class RaftMessage {
       }
 
       @java.lang.Override
-      public RaftMessage.VoteRequest buildPartial() {
-        RaftMessage.VoteRequest result = new RaftMessage.VoteRequest(this);
+      public com.dinghai.raft.core.proto.RaftMessage.VoteRequest buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.VoteRequest result = new com.dinghai.raft.core.proto.RaftMessage.VoteRequest(this);
         result.term_ = term_;
         result.serverId_ = serverId_;
         result.lastLogIndex_ = lastLogIndex_;
@@ -489,16 +2728,16 @@ public final class RaftMessage {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RaftMessage.VoteRequest) {
-          return mergeFrom((RaftMessage.VoteRequest)other);
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.VoteRequest) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.VoteRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RaftMessage.VoteRequest other) {
-        if (other == RaftMessage.VoteRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.VoteRequest other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.VoteRequest.getDefaultInstance()) return this;
         if (other.getTerm() != 0L) {
           setTerm(other.getTerm());
         }
@@ -526,11 +2765,11 @@ public final class RaftMessage {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RaftMessage.VoteRequest parsedMessage = null;
+        com.dinghai.raft.core.proto.RaftMessage.VoteRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RaftMessage.VoteRequest) e.getUnfinishedMessage();
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.VoteRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -680,12 +2919,12 @@ public final class RaftMessage {
     }
 
     // @@protoc_insertion_point(class_scope:raft.VoteRequest)
-    private static final RaftMessage.VoteRequest DEFAULT_INSTANCE;
+    private static final com.dinghai.raft.core.proto.RaftMessage.VoteRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new RaftMessage.VoteRequest();
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.VoteRequest();
     }
 
-    public static RaftMessage.VoteRequest getDefaultInstance() {
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -710,7 +2949,7 @@ public final class RaftMessage {
     }
 
     @java.lang.Override
-    public RaftMessage.VoteRequest getDefaultInstanceForType() {
+    public com.dinghai.raft.core.proto.RaftMessage.VoteRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -727,10 +2966,10 @@ public final class RaftMessage {
     long getTerm();
 
     /**
-     * <code>bool voteGranted = 2;</code>
-     * @return The voteGranted.
+     * <code>bool granted = 2;</code>
+     * @return The granted.
      */
-    boolean getVoteGranted();
+    boolean getGranted();
   }
   /**
    * Protobuf type {@code raft.VoteResponse}
@@ -784,7 +3023,7 @@ public final class RaftMessage {
             }
             case 16: {
 
-              voteGranted_ = input.readBool();
+              granted_ = input.readBool();
               break;
             }
             default: {
@@ -808,15 +3047,15 @@ public final class RaftMessage {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return RaftMessage.internal_static_raft_VoteResponse_descriptor;
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return RaftMessage.internal_static_raft_VoteResponse_fieldAccessorTable
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RaftMessage.VoteResponse.class, RaftMessage.VoteResponse.Builder.class);
+              com.dinghai.raft.core.proto.RaftMessage.VoteResponse.class, com.dinghai.raft.core.proto.RaftMessage.VoteResponse.Builder.class);
     }
 
     public static final int TERM_FIELD_NUMBER = 1;
@@ -830,15 +3069,15 @@ public final class RaftMessage {
       return term_;
     }
 
-    public static final int VOTEGRANTED_FIELD_NUMBER = 2;
-    private boolean voteGranted_;
+    public static final int GRANTED_FIELD_NUMBER = 2;
+    private boolean granted_;
     /**
-     * <code>bool voteGranted = 2;</code>
-     * @return The voteGranted.
+     * <code>bool granted = 2;</code>
+     * @return The granted.
      */
     @java.lang.Override
-    public boolean getVoteGranted() {
-      return voteGranted_;
+    public boolean getGranted() {
+      return granted_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -858,8 +3097,8 @@ public final class RaftMessage {
       if (term_ != 0L) {
         output.writeUInt64(1, term_);
       }
-      if (voteGranted_ != false) {
-        output.writeBool(2, voteGranted_);
+      if (granted_ != false) {
+        output.writeBool(2, granted_);
       }
       unknownFields.writeTo(output);
     }
@@ -874,9 +3113,9 @@ public final class RaftMessage {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(1, term_);
       }
-      if (voteGranted_ != false) {
+      if (granted_ != false) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, voteGranted_);
+          .computeBoolSize(2, granted_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -888,15 +3127,15 @@ public final class RaftMessage {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof RaftMessage.VoteResponse)) {
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.VoteResponse)) {
         return super.equals(obj);
       }
-      RaftMessage.VoteResponse other = (RaftMessage.VoteResponse) obj;
+      com.dinghai.raft.core.proto.RaftMessage.VoteResponse other = (com.dinghai.raft.core.proto.RaftMessage.VoteResponse) obj;
 
       if (getTerm()
           != other.getTerm()) return false;
-      if (getVoteGranted()
-          != other.getVoteGranted()) return false;
+      if (getGranted()
+          != other.getGranted()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -911,77 +3150,77 @@ public final class RaftMessage {
       hash = (37 * hash) + TERM_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTerm());
-      hash = (37 * hash) + VOTEGRANTED_FIELD_NUMBER;
+      hash = (37 * hash) + GRANTED_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getVoteGranted());
+          getGranted());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.VoteResponse parseFrom(byte[] data)
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.VoteResponse parseFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.VoteResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static RaftMessage.VoteResponse parseDelimitedFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.VoteResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -994,7 +3233,7 @@ public final class RaftMessage {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(RaftMessage.VoteResponse prototype) {
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.VoteResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1015,21 +3254,21 @@ public final class RaftMessage {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:raft.VoteResponse)
-        RaftMessage.VoteResponseOrBuilder {
+        com.dinghai.raft.core.proto.RaftMessage.VoteResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return RaftMessage.internal_static_raft_VoteResponse_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return RaftMessage.internal_static_raft_VoteResponse_fieldAccessorTable
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RaftMessage.VoteResponse.class, RaftMessage.VoteResponse.Builder.class);
+                com.dinghai.raft.core.proto.RaftMessage.VoteResponse.class, com.dinghai.raft.core.proto.RaftMessage.VoteResponse.Builder.class);
       }
 
-      // Construct using com.dinghai.raft.proto.RaftMessage.VoteResponse.newBuilder()
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.VoteResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1049,7 +3288,7 @@ public final class RaftMessage {
         super.clear();
         term_ = 0L;
 
-        voteGranted_ = false;
+        granted_ = false;
 
         return this;
       }
@@ -1057,17 +3296,17 @@ public final class RaftMessage {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return RaftMessage.internal_static_raft_VoteResponse_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_VoteResponse_descriptor;
       }
 
       @java.lang.Override
-      public RaftMessage.VoteResponse getDefaultInstanceForType() {
-        return RaftMessage.VoteResponse.getDefaultInstance();
+      public com.dinghai.raft.core.proto.RaftMessage.VoteResponse getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.VoteResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public RaftMessage.VoteResponse build() {
-        RaftMessage.VoteResponse result = buildPartial();
+      public com.dinghai.raft.core.proto.RaftMessage.VoteResponse build() {
+        com.dinghai.raft.core.proto.RaftMessage.VoteResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1075,10 +3314,10 @@ public final class RaftMessage {
       }
 
       @java.lang.Override
-      public RaftMessage.VoteResponse buildPartial() {
-        RaftMessage.VoteResponse result = new RaftMessage.VoteResponse(this);
+      public com.dinghai.raft.core.proto.RaftMessage.VoteResponse buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.VoteResponse result = new com.dinghai.raft.core.proto.RaftMessage.VoteResponse(this);
         result.term_ = term_;
-        result.voteGranted_ = voteGranted_;
+        result.granted_ = granted_;
         onBuilt();
         return result;
       }
@@ -1117,21 +3356,21 @@ public final class RaftMessage {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RaftMessage.VoteResponse) {
-          return mergeFrom((RaftMessage.VoteResponse)other);
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.VoteResponse) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.VoteResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RaftMessage.VoteResponse other) {
-        if (other == RaftMessage.VoteResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.VoteResponse other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.VoteResponse.getDefaultInstance()) return this;
         if (other.getTerm() != 0L) {
           setTerm(other.getTerm());
         }
-        if (other.getVoteGranted() != false) {
-          setVoteGranted(other.getVoteGranted());
+        if (other.getGranted() != false) {
+          setGranted(other.getGranted());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1148,11 +3387,11 @@ public final class RaftMessage {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RaftMessage.VoteResponse parsedMessage = null;
+        com.dinghai.raft.core.proto.RaftMessage.VoteResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RaftMessage.VoteResponse) e.getUnfinishedMessage();
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.VoteResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1193,33 +3432,33 @@ public final class RaftMessage {
         return this;
       }
 
-      private boolean voteGranted_ ;
+      private boolean granted_ ;
       /**
-       * <code>bool voteGranted = 2;</code>
-       * @return The voteGranted.
+       * <code>bool granted = 2;</code>
+       * @return The granted.
        */
       @java.lang.Override
-      public boolean getVoteGranted() {
-        return voteGranted_;
+      public boolean getGranted() {
+        return granted_;
       }
       /**
-       * <code>bool voteGranted = 2;</code>
-       * @param value The voteGranted to set.
+       * <code>bool granted = 2;</code>
+       * @param value The granted to set.
        * @return This builder for chaining.
        */
-      public Builder setVoteGranted(boolean value) {
+      public Builder setGranted(boolean value) {
         
-        voteGranted_ = value;
+        granted_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bool voteGranted = 2;</code>
+       * <code>bool granted = 2;</code>
        * @return This builder for chaining.
        */
-      public Builder clearVoteGranted() {
+      public Builder clearGranted() {
         
-        voteGranted_ = false;
+        granted_ = false;
         onChanged();
         return this;
       }
@@ -1240,12 +3479,12 @@ public final class RaftMessage {
     }
 
     // @@protoc_insertion_point(class_scope:raft.VoteResponse)
-    private static final RaftMessage.VoteResponse DEFAULT_INSTANCE;
+    private static final com.dinghai.raft.core.proto.RaftMessage.VoteResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new RaftMessage.VoteResponse();
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.VoteResponse();
     }
 
-    public static RaftMessage.VoteResponse getDefaultInstance() {
+    public static com.dinghai.raft.core.proto.RaftMessage.VoteResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1270,7 +3509,7 @@ public final class RaftMessage {
     }
 
     @java.lang.Override
-    public RaftMessage.VoteResponse getDefaultInstanceForType() {
+    public com.dinghai.raft.core.proto.RaftMessage.VoteResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1380,15 +3619,15 @@ public final class RaftMessage {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return RaftMessage.internal_static_raft_LogEntry_descriptor;
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_LogEntry_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return RaftMessage.internal_static_raft_LogEntry_fieldAccessorTable
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_LogEntry_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RaftMessage.LogEntry.class, RaftMessage.LogEntry.Builder.class);
+              com.dinghai.raft.core.proto.RaftMessage.LogEntry.class, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder.class);
     }
 
     public static final int TERM_FIELD_NUMBER = 1;
@@ -1478,10 +3717,10 @@ public final class RaftMessage {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof RaftMessage.LogEntry)) {
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.LogEntry)) {
         return super.equals(obj);
       }
-      RaftMessage.LogEntry other = (RaftMessage.LogEntry) obj;
+      com.dinghai.raft.core.proto.RaftMessage.LogEntry other = (com.dinghai.raft.core.proto.RaftMessage.LogEntry) obj;
 
       if (getTerm()
           != other.getTerm()) return false;
@@ -1513,69 +3752,69 @@ public final class RaftMessage {
       return hash;
     }
 
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.LogEntry parseFrom(byte[] data)
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.LogEntry parseFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.LogEntry parseDelimitedFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static RaftMessage.LogEntry parseDelimitedFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.LogEntry parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1588,7 +3827,7 @@ public final class RaftMessage {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(RaftMessage.LogEntry prototype) {
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.LogEntry prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -1609,21 +3848,21 @@ public final class RaftMessage {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:raft.LogEntry)
-        RaftMessage.LogEntryOrBuilder {
+        com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return RaftMessage.internal_static_raft_LogEntry_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_LogEntry_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return RaftMessage.internal_static_raft_LogEntry_fieldAccessorTable
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_LogEntry_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RaftMessage.LogEntry.class, RaftMessage.LogEntry.Builder.class);
+                com.dinghai.raft.core.proto.RaftMessage.LogEntry.class, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder.class);
       }
 
-      // Construct using com.dinghai.raft.proto.RaftMessage.LogEntry.newBuilder()
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.LogEntry.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1653,17 +3892,17 @@ public final class RaftMessage {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return RaftMessage.internal_static_raft_LogEntry_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_LogEntry_descriptor;
       }
 
       @java.lang.Override
-      public RaftMessage.LogEntry getDefaultInstanceForType() {
-        return RaftMessage.LogEntry.getDefaultInstance();
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.LogEntry.getDefaultInstance();
       }
 
       @java.lang.Override
-      public RaftMessage.LogEntry build() {
-        RaftMessage.LogEntry result = buildPartial();
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry build() {
+        com.dinghai.raft.core.proto.RaftMessage.LogEntry result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1671,8 +3910,8 @@ public final class RaftMessage {
       }
 
       @java.lang.Override
-      public RaftMessage.LogEntry buildPartial() {
-        RaftMessage.LogEntry result = new RaftMessage.LogEntry(this);
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.LogEntry result = new com.dinghai.raft.core.proto.RaftMessage.LogEntry(this);
         result.term_ = term_;
         result.index_ = index_;
         result.data_ = data_;
@@ -1714,16 +3953,16 @@ public final class RaftMessage {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RaftMessage.LogEntry) {
-          return mergeFrom((RaftMessage.LogEntry)other);
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.LogEntry) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.LogEntry)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RaftMessage.LogEntry other) {
-        if (other == RaftMessage.LogEntry.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.LogEntry other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.LogEntry.getDefaultInstance()) return this;
         if (other.getTerm() != 0L) {
           setTerm(other.getTerm());
         }
@@ -1748,11 +3987,11 @@ public final class RaftMessage {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RaftMessage.LogEntry parsedMessage = null;
+        com.dinghai.raft.core.proto.RaftMessage.LogEntry parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RaftMessage.LogEntry) e.getUnfinishedMessage();
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.LogEntry) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1874,12 +4113,12 @@ public final class RaftMessage {
     }
 
     // @@protoc_insertion_point(class_scope:raft.LogEntry)
-    private static final RaftMessage.LogEntry DEFAULT_INSTANCE;
+    private static final com.dinghai.raft.core.proto.RaftMessage.LogEntry DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new RaftMessage.LogEntry();
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.LogEntry();
     }
 
-    public static RaftMessage.LogEntry getDefaultInstance() {
+    public static com.dinghai.raft.core.proto.RaftMessage.LogEntry getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1904,7 +4143,7 @@ public final class RaftMessage {
     }
 
     @java.lang.Override
-    public RaftMessage.LogEntry getDefaultInstanceForType() {
+    public com.dinghai.raft.core.proto.RaftMessage.LogEntry getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1915,51 +4154,57 @@ public final class RaftMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint64 term = 1;</code>
+     * <code>uint32 server_id = 1;</code>
+     * @return The serverId.
+     */
+    int getServerId();
+
+    /**
+     * <code>uint64 term = 2;</code>
      * @return The term.
      */
     long getTerm();
 
     /**
-     * <code>uint64 leader_id = 2;</code>
+     * <code>uint64 leader_id = 3;</code>
      * @return The leaderId.
      */
     long getLeaderId();
 
     /**
-     * <code>uint64 prev_log_index = 3;</code>
+     * <code>uint64 prev_log_index = 4;</code>
      * @return The prevLogIndex.
      */
     long getPrevLogIndex();
 
     /**
-     * <code>uint64 prev_log_term = 4;</code>
+     * <code>uint64 prev_log_term = 5;</code>
      * @return The prevLogTerm.
      */
     long getPrevLogTerm();
 
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
-    java.util.List<RaftMessage.LogEntry>
-        getLogsList();
+    java.util.List<com.dinghai.raft.core.proto.RaftMessage.LogEntry> 
+        getEntriesList();
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
-    RaftMessage.LogEntry getLogs(int index);
+    com.dinghai.raft.core.proto.RaftMessage.LogEntry getEntries(int index);
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
-    int getLogsCount();
+    int getEntriesCount();
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
-    java.util.List<? extends RaftMessage.LogEntryOrBuilder>
-        getLogsOrBuilderList();
+    java.util.List<? extends com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder> 
+        getEntriesOrBuilderList();
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
-    RaftMessage.LogEntryOrBuilder getLogsOrBuilder(
+    com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder getEntriesOrBuilder(
         int index);
   }
   /**
@@ -1975,7 +4220,7 @@ public final class RaftMessage {
       super(builder);
     }
     private AppendEntityRequest() {
-      logs_ = java.util.Collections.emptyList();
+      entries_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2011,31 +4256,36 @@ public final class RaftMessage {
               break;
             case 8: {
 
-              term_ = input.readUInt64();
+              serverId_ = input.readUInt32();
               break;
             }
             case 16: {
 
-              leaderId_ = input.readUInt64();
+              term_ = input.readUInt64();
               break;
             }
             case 24: {
 
-              prevLogIndex_ = input.readUInt64();
+              leaderId_ = input.readUInt64();
               break;
             }
             case 32: {
 
+              prevLogIndex_ = input.readUInt64();
+              break;
+            }
+            case 40: {
+
               prevLogTerm_ = input.readUInt64();
               break;
             }
-            case 42: {
+            case 50: {
               if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-                logs_ = new java.util.ArrayList<RaftMessage.LogEntry>();
+                entries_ = new java.util.ArrayList<com.dinghai.raft.core.proto.RaftMessage.LogEntry>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              logs_.add(
-                  input.readMessage(RaftMessage.LogEntry.parser(), extensionRegistry));
+              entries_.add(
+                  input.readMessage(com.dinghai.raft.core.proto.RaftMessage.LogEntry.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -2054,7 +4304,7 @@ public final class RaftMessage {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
-          logs_ = java.util.Collections.unmodifiableList(logs_);
+          entries_ = java.util.Collections.unmodifiableList(entries_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2062,21 +4312,32 @@ public final class RaftMessage {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return RaftMessage.internal_static_raft_AppendEntityRequest_descriptor;
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return RaftMessage.internal_static_raft_AppendEntityRequest_fieldAccessorTable
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RaftMessage.AppendEntityRequest.class, RaftMessage.AppendEntityRequest.Builder.class);
+              com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.class, com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.Builder.class);
     }
 
-    public static final int TERM_FIELD_NUMBER = 1;
+    public static final int SERVER_ID_FIELD_NUMBER = 1;
+    private int serverId_;
+    /**
+     * <code>uint32 server_id = 1;</code>
+     * @return The serverId.
+     */
+    @java.lang.Override
+    public int getServerId() {
+      return serverId_;
+    }
+
+    public static final int TERM_FIELD_NUMBER = 2;
     private long term_;
     /**
-     * <code>uint64 term = 1;</code>
+     * <code>uint64 term = 2;</code>
      * @return The term.
      */
     @java.lang.Override
@@ -2084,10 +4345,10 @@ public final class RaftMessage {
       return term_;
     }
 
-    public static final int LEADER_ID_FIELD_NUMBER = 2;
+    public static final int LEADER_ID_FIELD_NUMBER = 3;
     private long leaderId_;
     /**
-     * <code>uint64 leader_id = 2;</code>
+     * <code>uint64 leader_id = 3;</code>
      * @return The leaderId.
      */
     @java.lang.Override
@@ -2095,10 +4356,10 @@ public final class RaftMessage {
       return leaderId_;
     }
 
-    public static final int PREV_LOG_INDEX_FIELD_NUMBER = 3;
+    public static final int PREV_LOG_INDEX_FIELD_NUMBER = 4;
     private long prevLogIndex_;
     /**
-     * <code>uint64 prev_log_index = 3;</code>
+     * <code>uint64 prev_log_index = 4;</code>
      * @return The prevLogIndex.
      */
     @java.lang.Override
@@ -2106,10 +4367,10 @@ public final class RaftMessage {
       return prevLogIndex_;
     }
 
-    public static final int PREV_LOG_TERM_FIELD_NUMBER = 4;
+    public static final int PREV_LOG_TERM_FIELD_NUMBER = 5;
     private long prevLogTerm_;
     /**
-     * <code>uint64 prev_log_term = 4;</code>
+     * <code>uint64 prev_log_term = 5;</code>
      * @return The prevLogTerm.
      */
     @java.lang.Override
@@ -2117,44 +4378,44 @@ public final class RaftMessage {
       return prevLogTerm_;
     }
 
-    public static final int LOGS_FIELD_NUMBER = 5;
-    private java.util.List<RaftMessage.LogEntry> logs_;
+    public static final int ENTRIES_FIELD_NUMBER = 6;
+    private java.util.List<com.dinghai.raft.core.proto.RaftMessage.LogEntry> entries_;
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
     @java.lang.Override
-    public java.util.List<RaftMessage.LogEntry> getLogsList() {
-      return logs_;
+    public java.util.List<com.dinghai.raft.core.proto.RaftMessage.LogEntry> getEntriesList() {
+      return entries_;
     }
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
     @java.lang.Override
-    public java.util.List<? extends RaftMessage.LogEntryOrBuilder>
-        getLogsOrBuilderList() {
-      return logs_;
+    public java.util.List<? extends com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder> 
+        getEntriesOrBuilderList() {
+      return entries_;
     }
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
     @java.lang.Override
-    public int getLogsCount() {
-      return logs_.size();
+    public int getEntriesCount() {
+      return entries_.size();
     }
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
     @java.lang.Override
-    public RaftMessage.LogEntry getLogs(int index) {
-      return logs_.get(index);
+    public com.dinghai.raft.core.proto.RaftMessage.LogEntry getEntries(int index) {
+      return entries_.get(index);
     }
     /**
-     * <code>repeated .raft.LogEntry logs = 5;</code>
+     * <code>repeated .raft.LogEntry entries = 6;</code>
      */
     @java.lang.Override
-    public RaftMessage.LogEntryOrBuilder getLogsOrBuilder(
+    public com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder getEntriesOrBuilder(
         int index) {
-      return logs_.get(index);
+      return entries_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2171,20 +4432,23 @@ public final class RaftMessage {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (serverId_ != 0) {
+        output.writeUInt32(1, serverId_);
+      }
       if (term_ != 0L) {
-        output.writeUInt64(1, term_);
+        output.writeUInt64(2, term_);
       }
       if (leaderId_ != 0L) {
-        output.writeUInt64(2, leaderId_);
+        output.writeUInt64(3, leaderId_);
       }
       if (prevLogIndex_ != 0L) {
-        output.writeUInt64(3, prevLogIndex_);
+        output.writeUInt64(4, prevLogIndex_);
       }
       if (prevLogTerm_ != 0L) {
-        output.writeUInt64(4, prevLogTerm_);
+        output.writeUInt64(5, prevLogTerm_);
       }
-      for (int i = 0; i < logs_.size(); i++) {
-        output.writeMessage(5, logs_.get(i));
+      for (int i = 0; i < entries_.size(); i++) {
+        output.writeMessage(6, entries_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -2195,25 +4459,29 @@ public final class RaftMessage {
       if (size != -1) return size;
 
       size = 0;
+      if (serverId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, serverId_);
+      }
       if (term_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, term_);
+          .computeUInt64Size(2, term_);
       }
       if (leaderId_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(2, leaderId_);
+          .computeUInt64Size(3, leaderId_);
       }
       if (prevLogIndex_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, prevLogIndex_);
+          .computeUInt64Size(4, prevLogIndex_);
       }
       if (prevLogTerm_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, prevLogTerm_);
+          .computeUInt64Size(5, prevLogTerm_);
       }
-      for (int i = 0; i < logs_.size(); i++) {
+      for (int i = 0; i < entries_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, logs_.get(i));
+          .computeMessageSize(6, entries_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2225,11 +4493,13 @@ public final class RaftMessage {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof RaftMessage.AppendEntityRequest)) {
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest)) {
         return super.equals(obj);
       }
-      RaftMessage.AppendEntityRequest other = (RaftMessage.AppendEntityRequest) obj;
+      com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest other = (com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest) obj;
 
+      if (getServerId()
+          != other.getServerId()) return false;
       if (getTerm()
           != other.getTerm()) return false;
       if (getLeaderId()
@@ -2238,8 +4508,8 @@ public final class RaftMessage {
           != other.getPrevLogIndex()) return false;
       if (getPrevLogTerm()
           != other.getPrevLogTerm()) return false;
-      if (!getLogsList()
-          .equals(other.getLogsList())) return false;
+      if (!getEntriesList()
+          .equals(other.getEntriesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2251,6 +4521,8 @@ public final class RaftMessage {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SERVER_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId();
       hash = (37 * hash) + TERM_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTerm());
@@ -2263,78 +4535,78 @@ public final class RaftMessage {
       hash = (37 * hash) + PREV_LOG_TERM_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getPrevLogTerm());
-      if (getLogsCount() > 0) {
-        hash = (37 * hash) + LOGS_FIELD_NUMBER;
-        hash = (53 * hash) + getLogsList().hashCode();
+      if (getEntriesCount() > 0) {
+        hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+        hash = (53 * hash) + getEntriesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(byte[] data)
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityRequest parseDelimitedFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static RaftMessage.AppendEntityRequest parseDelimitedFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.AppendEntityRequest parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2347,7 +4619,7 @@ public final class RaftMessage {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(RaftMessage.AppendEntityRequest prototype) {
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -2368,21 +4640,21 @@ public final class RaftMessage {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:raft.AppendEntityRequest)
-        RaftMessage.AppendEntityRequestOrBuilder {
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return RaftMessage.internal_static_raft_AppendEntityRequest_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return RaftMessage.internal_static_raft_AppendEntityRequest_fieldAccessorTable
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RaftMessage.AppendEntityRequest.class, RaftMessage.AppendEntityRequest.Builder.class);
+                com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.class, com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.Builder.class);
       }
 
-      // Construct using com.dinghai.raft.proto.RaftMessage.AppendEntityRequest.newBuilder()
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -2395,12 +4667,14 @@ public final class RaftMessage {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getLogsFieldBuilder();
+          getEntriesFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        serverId_ = 0;
+
         term_ = 0L;
 
         leaderId_ = 0L;
@@ -2409,11 +4683,11 @@ public final class RaftMessage {
 
         prevLogTerm_ = 0L;
 
-        if (logsBuilder_ == null) {
-          logs_ = java.util.Collections.emptyList();
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          logsBuilder_.clear();
+          entriesBuilder_.clear();
         }
         return this;
       }
@@ -2421,17 +4695,17 @@ public final class RaftMessage {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return RaftMessage.internal_static_raft_AppendEntityRequest_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityRequest_descriptor;
       }
 
       @java.lang.Override
-      public RaftMessage.AppendEntityRequest getDefaultInstanceForType() {
-        return RaftMessage.AppendEntityRequest.getDefaultInstance();
+      public com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public RaftMessage.AppendEntityRequest build() {
-        RaftMessage.AppendEntityRequest result = buildPartial();
+      public com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest build() {
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -2439,21 +4713,22 @@ public final class RaftMessage {
       }
 
       @java.lang.Override
-      public RaftMessage.AppendEntityRequest buildPartial() {
-        RaftMessage.AppendEntityRequest result = new RaftMessage.AppendEntityRequest(this);
+      public com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest result = new com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest(this);
         int from_bitField0_ = bitField0_;
+        result.serverId_ = serverId_;
         result.term_ = term_;
         result.leaderId_ = leaderId_;
         result.prevLogIndex_ = prevLogIndex_;
         result.prevLogTerm_ = prevLogTerm_;
-        if (logsBuilder_ == null) {
+        if (entriesBuilder_ == null) {
           if (((bitField0_ & 0x00000001) != 0)) {
-            logs_ = java.util.Collections.unmodifiableList(logs_);
+            entries_ = java.util.Collections.unmodifiableList(entries_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.logs_ = logs_;
+          result.entries_ = entries_;
         } else {
-          result.logs_ = logsBuilder_.build();
+          result.entries_ = entriesBuilder_.build();
         }
         onBuilt();
         return result;
@@ -2493,16 +4768,19 @@ public final class RaftMessage {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RaftMessage.AppendEntityRequest) {
-          return mergeFrom((RaftMessage.AppendEntityRequest)other);
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RaftMessage.AppendEntityRequest other) {
-        if (other == RaftMessage.AppendEntityRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest.getDefaultInstance()) return this;
+        if (other.getServerId() != 0) {
+          setServerId(other.getServerId());
+        }
         if (other.getTerm() != 0L) {
           setTerm(other.getTerm());
         }
@@ -2515,29 +4793,29 @@ public final class RaftMessage {
         if (other.getPrevLogTerm() != 0L) {
           setPrevLogTerm(other.getPrevLogTerm());
         }
-        if (logsBuilder_ == null) {
-          if (!other.logs_.isEmpty()) {
-            if (logs_.isEmpty()) {
-              logs_ = other.logs_;
+        if (entriesBuilder_ == null) {
+          if (!other.entries_.isEmpty()) {
+            if (entries_.isEmpty()) {
+              entries_ = other.entries_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureLogsIsMutable();
-              logs_.addAll(other.logs_);
+              ensureEntriesIsMutable();
+              entries_.addAll(other.entries_);
             }
             onChanged();
           }
         } else {
-          if (!other.logs_.isEmpty()) {
-            if (logsBuilder_.isEmpty()) {
-              logsBuilder_.dispose();
-              logsBuilder_ = null;
-              logs_ = other.logs_;
+          if (!other.entries_.isEmpty()) {
+            if (entriesBuilder_.isEmpty()) {
+              entriesBuilder_.dispose();
+              entriesBuilder_ = null;
+              entries_ = other.entries_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              logsBuilder_ = 
+              entriesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getLogsFieldBuilder() : null;
+                   getEntriesFieldBuilder() : null;
             } else {
-              logsBuilder_.addAllMessages(other.logs_);
+              entriesBuilder_.addAllMessages(other.entries_);
             }
           }
         }
@@ -2556,11 +4834,11 @@ public final class RaftMessage {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RaftMessage.AppendEntityRequest parsedMessage = null;
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RaftMessage.AppendEntityRequest) e.getUnfinishedMessage();
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2571,9 +4849,40 @@ public final class RaftMessage {
       }
       private int bitField0_;
 
+      private int serverId_ ;
+      /**
+       * <code>uint32 server_id = 1;</code>
+       * @return The serverId.
+       */
+      @java.lang.Override
+      public int getServerId() {
+        return serverId_;
+      }
+      /**
+       * <code>uint32 server_id = 1;</code>
+       * @param value The serverId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServerId(int value) {
+        
+        serverId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 server_id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServerId() {
+        
+        serverId_ = 0;
+        onChanged();
+        return this;
+      }
+
       private long term_ ;
       /**
-       * <code>uint64 term = 1;</code>
+       * <code>uint64 term = 2;</code>
        * @return The term.
        */
       @java.lang.Override
@@ -2581,7 +4890,7 @@ public final class RaftMessage {
         return term_;
       }
       /**
-       * <code>uint64 term = 1;</code>
+       * <code>uint64 term = 2;</code>
        * @param value The term to set.
        * @return This builder for chaining.
        */
@@ -2592,7 +4901,7 @@ public final class RaftMessage {
         return this;
       }
       /**
-       * <code>uint64 term = 1;</code>
+       * <code>uint64 term = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTerm() {
@@ -2604,7 +4913,7 @@ public final class RaftMessage {
 
       private long leaderId_ ;
       /**
-       * <code>uint64 leader_id = 2;</code>
+       * <code>uint64 leader_id = 3;</code>
        * @return The leaderId.
        */
       @java.lang.Override
@@ -2612,7 +4921,7 @@ public final class RaftMessage {
         return leaderId_;
       }
       /**
-       * <code>uint64 leader_id = 2;</code>
+       * <code>uint64 leader_id = 3;</code>
        * @param value The leaderId to set.
        * @return This builder for chaining.
        */
@@ -2623,7 +4932,7 @@ public final class RaftMessage {
         return this;
       }
       /**
-       * <code>uint64 leader_id = 2;</code>
+       * <code>uint64 leader_id = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearLeaderId() {
@@ -2635,7 +4944,7 @@ public final class RaftMessage {
 
       private long prevLogIndex_ ;
       /**
-       * <code>uint64 prev_log_index = 3;</code>
+       * <code>uint64 prev_log_index = 4;</code>
        * @return The prevLogIndex.
        */
       @java.lang.Override
@@ -2643,7 +4952,7 @@ public final class RaftMessage {
         return prevLogIndex_;
       }
       /**
-       * <code>uint64 prev_log_index = 3;</code>
+       * <code>uint64 prev_log_index = 4;</code>
        * @param value The prevLogIndex to set.
        * @return This builder for chaining.
        */
@@ -2654,7 +4963,7 @@ public final class RaftMessage {
         return this;
       }
       /**
-       * <code>uint64 prev_log_index = 3;</code>
+       * <code>uint64 prev_log_index = 4;</code>
        * @return This builder for chaining.
        */
       public Builder clearPrevLogIndex() {
@@ -2666,7 +4975,7 @@ public final class RaftMessage {
 
       private long prevLogTerm_ ;
       /**
-       * <code>uint64 prev_log_term = 4;</code>
+       * <code>uint64 prev_log_term = 5;</code>
        * @return The prevLogTerm.
        */
       @java.lang.Override
@@ -2674,7 +4983,7 @@ public final class RaftMessage {
         return prevLogTerm_;
       }
       /**
-       * <code>uint64 prev_log_term = 4;</code>
+       * <code>uint64 prev_log_term = 5;</code>
        * @param value The prevLogTerm to set.
        * @return This builder for chaining.
        */
@@ -2685,7 +4994,7 @@ public final class RaftMessage {
         return this;
       }
       /**
-       * <code>uint64 prev_log_term = 4;</code>
+       * <code>uint64 prev_log_term = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearPrevLogTerm() {
@@ -2695,244 +5004,244 @@ public final class RaftMessage {
         return this;
       }
 
-      private java.util.List<RaftMessage.LogEntry> logs_ =
+      private java.util.List<com.dinghai.raft.core.proto.RaftMessage.LogEntry> entries_ =
         java.util.Collections.emptyList();
-      private void ensureLogsIsMutable() {
+      private void ensureEntriesIsMutable() {
         if (!((bitField0_ & 0x00000001) != 0)) {
-          logs_ = new java.util.ArrayList<RaftMessage.LogEntry>(logs_);
+          entries_ = new java.util.ArrayList<com.dinghai.raft.core.proto.RaftMessage.LogEntry>(entries_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          RaftMessage.LogEntry, RaftMessage.LogEntry.Builder, RaftMessage.LogEntryOrBuilder> logsBuilder_;
+          com.dinghai.raft.core.proto.RaftMessage.LogEntry, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder, com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder> entriesBuilder_;
 
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public java.util.List<RaftMessage.LogEntry> getLogsList() {
-        if (logsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(logs_);
+      public java.util.List<com.dinghai.raft.core.proto.RaftMessage.LogEntry> getEntriesList() {
+        if (entriesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(entries_);
         } else {
-          return logsBuilder_.getMessageList();
+          return entriesBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public int getLogsCount() {
-        if (logsBuilder_ == null) {
-          return logs_.size();
+      public int getEntriesCount() {
+        if (entriesBuilder_ == null) {
+          return entries_.size();
         } else {
-          return logsBuilder_.getCount();
+          return entriesBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public RaftMessage.LogEntry getLogs(int index) {
-        if (logsBuilder_ == null) {
-          return logs_.get(index);
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry getEntries(int index) {
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);
         } else {
-          return logsBuilder_.getMessage(index);
+          return entriesBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder setLogs(
-          int index, RaftMessage.LogEntry value) {
-        if (logsBuilder_ == null) {
+      public Builder setEntries(
+          int index, com.dinghai.raft.core.proto.RaftMessage.LogEntry value) {
+        if (entriesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLogsIsMutable();
-          logs_.set(index, value);
+          ensureEntriesIsMutable();
+          entries_.set(index, value);
           onChanged();
         } else {
-          logsBuilder_.setMessage(index, value);
+          entriesBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder setLogs(
-          int index, RaftMessage.LogEntry.Builder builderForValue) {
-        if (logsBuilder_ == null) {
-          ensureLogsIsMutable();
-          logs_.set(index, builderForValue.build());
+      public Builder setEntries(
+          int index, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.set(index, builderForValue.build());
           onChanged();
         } else {
-          logsBuilder_.setMessage(index, builderForValue.build());
+          entriesBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder addLogs(RaftMessage.LogEntry value) {
-        if (logsBuilder_ == null) {
+      public Builder addEntries(com.dinghai.raft.core.proto.RaftMessage.LogEntry value) {
+        if (entriesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLogsIsMutable();
-          logs_.add(value);
+          ensureEntriesIsMutable();
+          entries_.add(value);
           onChanged();
         } else {
-          logsBuilder_.addMessage(value);
+          entriesBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder addLogs(
-          int index, RaftMessage.LogEntry value) {
-        if (logsBuilder_ == null) {
+      public Builder addEntries(
+          int index, com.dinghai.raft.core.proto.RaftMessage.LogEntry value) {
+        if (entriesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureLogsIsMutable();
-          logs_.add(index, value);
+          ensureEntriesIsMutable();
+          entries_.add(index, value);
           onChanged();
         } else {
-          logsBuilder_.addMessage(index, value);
+          entriesBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder addLogs(
-          RaftMessage.LogEntry.Builder builderForValue) {
-        if (logsBuilder_ == null) {
-          ensureLogsIsMutable();
-          logs_.add(builderForValue.build());
+      public Builder addEntries(
+          com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(builderForValue.build());
           onChanged();
         } else {
-          logsBuilder_.addMessage(builderForValue.build());
+          entriesBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder addLogs(
-          int index, RaftMessage.LogEntry.Builder builderForValue) {
-        if (logsBuilder_ == null) {
-          ensureLogsIsMutable();
-          logs_.add(index, builderForValue.build());
+      public Builder addEntries(
+          int index, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder builderForValue) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.add(index, builderForValue.build());
           onChanged();
         } else {
-          logsBuilder_.addMessage(index, builderForValue.build());
+          entriesBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder addAllLogs(
-          java.lang.Iterable<? extends RaftMessage.LogEntry> values) {
-        if (logsBuilder_ == null) {
-          ensureLogsIsMutable();
+      public Builder addAllEntries(
+          java.lang.Iterable<? extends com.dinghai.raft.core.proto.RaftMessage.LogEntry> values) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, logs_);
+              values, entries_);
           onChanged();
         } else {
-          logsBuilder_.addAllMessages(values);
+          entriesBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder clearLogs() {
-        if (logsBuilder_ == null) {
-          logs_ = java.util.Collections.emptyList();
+      public Builder clearEntries() {
+        if (entriesBuilder_ == null) {
+          entries_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          logsBuilder_.clear();
+          entriesBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public Builder removeLogs(int index) {
-        if (logsBuilder_ == null) {
-          ensureLogsIsMutable();
-          logs_.remove(index);
+      public Builder removeEntries(int index) {
+        if (entriesBuilder_ == null) {
+          ensureEntriesIsMutable();
+          entries_.remove(index);
           onChanged();
         } else {
-          logsBuilder_.remove(index);
+          entriesBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public RaftMessage.LogEntry.Builder getLogsBuilder(
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder getEntriesBuilder(
           int index) {
-        return getLogsFieldBuilder().getBuilder(index);
+        return getEntriesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public RaftMessage.LogEntryOrBuilder getLogsOrBuilder(
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder getEntriesOrBuilder(
           int index) {
-        if (logsBuilder_ == null) {
-          return logs_.get(index);  } else {
-          return logsBuilder_.getMessageOrBuilder(index);
+        if (entriesBuilder_ == null) {
+          return entries_.get(index);  } else {
+          return entriesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public java.util.List<? extends RaftMessage.LogEntryOrBuilder>
-           getLogsOrBuilderList() {
-        if (logsBuilder_ != null) {
-          return logsBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder> 
+           getEntriesOrBuilderList() {
+        if (entriesBuilder_ != null) {
+          return entriesBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(logs_);
+          return java.util.Collections.unmodifiableList(entries_);
         }
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public RaftMessage.LogEntry.Builder addLogsBuilder() {
-        return getLogsFieldBuilder().addBuilder(
-            RaftMessage.LogEntry.getDefaultInstance());
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder addEntriesBuilder() {
+        return getEntriesFieldBuilder().addBuilder(
+            com.dinghai.raft.core.proto.RaftMessage.LogEntry.getDefaultInstance());
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public RaftMessage.LogEntry.Builder addLogsBuilder(
+      public com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder addEntriesBuilder(
           int index) {
-        return getLogsFieldBuilder().addBuilder(
-            index, RaftMessage.LogEntry.getDefaultInstance());
+        return getEntriesFieldBuilder().addBuilder(
+            index, com.dinghai.raft.core.proto.RaftMessage.LogEntry.getDefaultInstance());
       }
       /**
-       * <code>repeated .raft.LogEntry logs = 5;</code>
+       * <code>repeated .raft.LogEntry entries = 6;</code>
        */
-      public java.util.List<RaftMessage.LogEntry.Builder>
-           getLogsBuilderList() {
-        return getLogsFieldBuilder().getBuilderList();
+      public java.util.List<com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder> 
+           getEntriesBuilderList() {
+        return getEntriesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          RaftMessage.LogEntry, RaftMessage.LogEntry.Builder, RaftMessage.LogEntryOrBuilder>
-          getLogsFieldBuilder() {
-        if (logsBuilder_ == null) {
-          logsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              RaftMessage.LogEntry, RaftMessage.LogEntry.Builder, RaftMessage.LogEntryOrBuilder>(
-                  logs_,
+          com.dinghai.raft.core.proto.RaftMessage.LogEntry, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder, com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder> 
+          getEntriesFieldBuilder() {
+        if (entriesBuilder_ == null) {
+          entriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.dinghai.raft.core.proto.RaftMessage.LogEntry, com.dinghai.raft.core.proto.RaftMessage.LogEntry.Builder, com.dinghai.raft.core.proto.RaftMessage.LogEntryOrBuilder>(
+                  entries_,
                   ((bitField0_ & 0x00000001) != 0),
                   getParentForChildren(),
                   isClean());
-          logs_ = null;
+          entries_ = null;
         }
-        return logsBuilder_;
+        return entriesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -2951,12 +5260,12 @@ public final class RaftMessage {
     }
 
     // @@protoc_insertion_point(class_scope:raft.AppendEntityRequest)
-    private static final RaftMessage.AppendEntityRequest DEFAULT_INSTANCE;
+    private static final com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new RaftMessage.AppendEntityRequest();
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest();
     }
 
-    public static RaftMessage.AppendEntityRequest getDefaultInstance() {
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2981,7 +5290,7 @@ public final class RaftMessage {
     }
 
     @java.lang.Override
-    public RaftMessage.AppendEntityRequest getDefaultInstanceForType() {
+    public com.dinghai.raft.core.proto.RaftMessage.AppendEntityRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2992,16 +5301,27 @@ public final class RaftMessage {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint64 term = 1;</code>
+     * <code>.raft.ResCode res_code = 1;</code>
+     * @return The enum numeric value on the wire for resCode.
+     */
+    int getResCodeValue();
+    /**
+     * <code>.raft.ResCode res_code = 1;</code>
+     * @return The resCode.
+     */
+    com.dinghai.raft.core.proto.RaftMessage.ResCode getResCode();
+
+    /**
+     * <code>uint64 term = 2;</code>
      * @return The term.
      */
     long getTerm();
 
     /**
-     * <code>bool success = 2;</code>
-     * @return The success.
+     * <code>uint64 last_log_index = 3;</code>
+     * @return The lastLogIndex.
      */
-    boolean getSuccess();
+    long getLastLogIndex();
   }
   /**
    * Protobuf type {@code raft.AppendEntityResponse}
@@ -3016,6 +5336,7 @@ public final class RaftMessage {
       super(builder);
     }
     private AppendEntityResponse() {
+      resCode_ = 0;
     }
 
     @java.lang.Override
@@ -3049,13 +5370,19 @@ public final class RaftMessage {
               done = true;
               break;
             case 8: {
+              int rawValue = input.readEnum();
 
-              term_ = input.readUInt64();
+              resCode_ = rawValue;
               break;
             }
             case 16: {
 
-              success_ = input.readBool();
+              term_ = input.readUInt64();
+              break;
+            }
+            case 24: {
+
+              lastLogIndex_ = input.readUInt64();
               break;
             }
             default: {
@@ -3079,21 +5406,40 @@ public final class RaftMessage {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return RaftMessage.internal_static_raft_AppendEntityResponse_descriptor;
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return RaftMessage.internal_static_raft_AppendEntityResponse_fieldAccessorTable
+      return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              RaftMessage.AppendEntityResponse.class, RaftMessage.AppendEntityResponse.Builder.class);
+              com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.class, com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.Builder.class);
     }
 
-    public static final int TERM_FIELD_NUMBER = 1;
+    public static final int RES_CODE_FIELD_NUMBER = 1;
+    private int resCode_;
+    /**
+     * <code>.raft.ResCode res_code = 1;</code>
+     * @return The enum numeric value on the wire for resCode.
+     */
+    @java.lang.Override public int getResCodeValue() {
+      return resCode_;
+    }
+    /**
+     * <code>.raft.ResCode res_code = 1;</code>
+     * @return The resCode.
+     */
+    @java.lang.Override public com.dinghai.raft.core.proto.RaftMessage.ResCode getResCode() {
+      @SuppressWarnings("deprecation")
+      com.dinghai.raft.core.proto.RaftMessage.ResCode result = com.dinghai.raft.core.proto.RaftMessage.ResCode.valueOf(resCode_);
+      return result == null ? com.dinghai.raft.core.proto.RaftMessage.ResCode.UNRECOGNIZED : result;
+    }
+
+    public static final int TERM_FIELD_NUMBER = 2;
     private long term_;
     /**
-     * <code>uint64 term = 1;</code>
+     * <code>uint64 term = 2;</code>
      * @return The term.
      */
     @java.lang.Override
@@ -3101,15 +5447,15 @@ public final class RaftMessage {
       return term_;
     }
 
-    public static final int SUCCESS_FIELD_NUMBER = 2;
-    private boolean success_;
+    public static final int LAST_LOG_INDEX_FIELD_NUMBER = 3;
+    private long lastLogIndex_;
     /**
-     * <code>bool success = 2;</code>
-     * @return The success.
+     * <code>uint64 last_log_index = 3;</code>
+     * @return The lastLogIndex.
      */
     @java.lang.Override
-    public boolean getSuccess() {
-      return success_;
+    public long getLastLogIndex() {
+      return lastLogIndex_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3126,11 +5472,14 @@ public final class RaftMessage {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (term_ != 0L) {
-        output.writeUInt64(1, term_);
+      if (resCode_ != com.dinghai.raft.core.proto.RaftMessage.ResCode.RES_CODE_SUCCESS.getNumber()) {
+        output.writeEnum(1, resCode_);
       }
-      if (success_ != false) {
-        output.writeBool(2, success_);
+      if (term_ != 0L) {
+        output.writeUInt64(2, term_);
+      }
+      if (lastLogIndex_ != 0L) {
+        output.writeUInt64(3, lastLogIndex_);
       }
       unknownFields.writeTo(output);
     }
@@ -3141,13 +5490,17 @@ public final class RaftMessage {
       if (size != -1) return size;
 
       size = 0;
+      if (resCode_ != com.dinghai.raft.core.proto.RaftMessage.ResCode.RES_CODE_SUCCESS.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, resCode_);
+      }
       if (term_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, term_);
+          .computeUInt64Size(2, term_);
       }
-      if (success_ != false) {
+      if (lastLogIndex_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, success_);
+          .computeUInt64Size(3, lastLogIndex_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3159,15 +5512,16 @@ public final class RaftMessage {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof RaftMessage.AppendEntityResponse)) {
+      if (!(obj instanceof com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse)) {
         return super.equals(obj);
       }
-      RaftMessage.AppendEntityResponse other = (RaftMessage.AppendEntityResponse) obj;
+      com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse other = (com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse) obj;
 
+      if (resCode_ != other.resCode_) return false;
       if (getTerm()
           != other.getTerm()) return false;
-      if (getSuccess()
-          != other.getSuccess()) return false;
+      if (getLastLogIndex()
+          != other.getLastLogIndex()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3179,80 +5533,82 @@ public final class RaftMessage {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + RES_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + resCode_;
       hash = (37 * hash) + TERM_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           getTerm());
-      hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getSuccess());
+      hash = (37 * hash) + LAST_LOG_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getLastLogIndex());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(byte[] data)
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityResponse parseDelimitedFrom(java.io.InputStream input)
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static RaftMessage.AppendEntityResponse parseDelimitedFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static RaftMessage.AppendEntityResponse parseFrom(
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3265,7 +5621,7 @@ public final class RaftMessage {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(RaftMessage.AppendEntityResponse prototype) {
+    public static Builder newBuilder(com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3286,21 +5642,21 @@ public final class RaftMessage {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:raft.AppendEntityResponse)
-        RaftMessage.AppendEntityResponseOrBuilder {
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return RaftMessage.internal_static_raft_AppendEntityResponse_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return RaftMessage.internal_static_raft_AppendEntityResponse_fieldAccessorTable
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                RaftMessage.AppendEntityResponse.class, RaftMessage.AppendEntityResponse.Builder.class);
+                com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.class, com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.Builder.class);
       }
 
-      // Construct using com.dinghai.raft.proto.RaftMessage.AppendEntityResponse.newBuilder()
+      // Construct using com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3318,9 +5674,11 @@ public final class RaftMessage {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        resCode_ = 0;
+
         term_ = 0L;
 
-        success_ = false;
+        lastLogIndex_ = 0L;
 
         return this;
       }
@@ -3328,17 +5686,17 @@ public final class RaftMessage {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return RaftMessage.internal_static_raft_AppendEntityResponse_descriptor;
+        return com.dinghai.raft.core.proto.RaftMessage.internal_static_raft_AppendEntityResponse_descriptor;
       }
 
       @java.lang.Override
-      public RaftMessage.AppendEntityResponse getDefaultInstanceForType() {
-        return RaftMessage.AppendEntityResponse.getDefaultInstance();
+      public com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse getDefaultInstanceForType() {
+        return com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public RaftMessage.AppendEntityResponse build() {
-        RaftMessage.AppendEntityResponse result = buildPartial();
+      public com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse build() {
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3346,10 +5704,11 @@ public final class RaftMessage {
       }
 
       @java.lang.Override
-      public RaftMessage.AppendEntityResponse buildPartial() {
-        RaftMessage.AppendEntityResponse result = new RaftMessage.AppendEntityResponse(this);
+      public com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse buildPartial() {
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse result = new com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse(this);
+        result.resCode_ = resCode_;
         result.term_ = term_;
-        result.success_ = success_;
+        result.lastLogIndex_ = lastLogIndex_;
         onBuilt();
         return result;
       }
@@ -3388,21 +5747,24 @@ public final class RaftMessage {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof RaftMessage.AppendEntityResponse) {
-          return mergeFrom((RaftMessage.AppendEntityResponse)other);
+        if (other instanceof com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse) {
+          return mergeFrom((com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(RaftMessage.AppendEntityResponse other) {
-        if (other == RaftMessage.AppendEntityResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse other) {
+        if (other == com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse.getDefaultInstance()) return this;
+        if (other.resCode_ != 0) {
+          setResCodeValue(other.getResCodeValue());
+        }
         if (other.getTerm() != 0L) {
           setTerm(other.getTerm());
         }
-        if (other.getSuccess() != false) {
-          setSuccess(other.getSuccess());
+        if (other.getLastLogIndex() != 0L) {
+          setLastLogIndex(other.getLastLogIndex());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3419,11 +5781,11 @@ public final class RaftMessage {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        RaftMessage.AppendEntityResponse parsedMessage = null;
+        com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (RaftMessage.AppendEntityResponse) e.getUnfinishedMessage();
+          parsedMessage = (com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3433,9 +5795,63 @@ public final class RaftMessage {
         return this;
       }
 
+      private int resCode_ = 0;
+      /**
+       * <code>.raft.ResCode res_code = 1;</code>
+       * @return The enum numeric value on the wire for resCode.
+       */
+      @java.lang.Override public int getResCodeValue() {
+        return resCode_;
+      }
+      /**
+       * <code>.raft.ResCode res_code = 1;</code>
+       * @param value The enum numeric value on the wire for resCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResCodeValue(int value) {
+        
+        resCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.raft.ResCode res_code = 1;</code>
+       * @return The resCode.
+       */
+      @java.lang.Override
+      public com.dinghai.raft.core.proto.RaftMessage.ResCode getResCode() {
+        @SuppressWarnings("deprecation")
+        com.dinghai.raft.core.proto.RaftMessage.ResCode result = com.dinghai.raft.core.proto.RaftMessage.ResCode.valueOf(resCode_);
+        return result == null ? com.dinghai.raft.core.proto.RaftMessage.ResCode.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.raft.ResCode res_code = 1;</code>
+       * @param value The resCode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResCode(com.dinghai.raft.core.proto.RaftMessage.ResCode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        resCode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.raft.ResCode res_code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResCode() {
+        
+        resCode_ = 0;
+        onChanged();
+        return this;
+      }
+
       private long term_ ;
       /**
-       * <code>uint64 term = 1;</code>
+       * <code>uint64 term = 2;</code>
        * @return The term.
        */
       @java.lang.Override
@@ -3443,7 +5859,7 @@ public final class RaftMessage {
         return term_;
       }
       /**
-       * <code>uint64 term = 1;</code>
+       * <code>uint64 term = 2;</code>
        * @param value The term to set.
        * @return This builder for chaining.
        */
@@ -3454,7 +5870,7 @@ public final class RaftMessage {
         return this;
       }
       /**
-       * <code>uint64 term = 1;</code>
+       * <code>uint64 term = 2;</code>
        * @return This builder for chaining.
        */
       public Builder clearTerm() {
@@ -3464,33 +5880,33 @@ public final class RaftMessage {
         return this;
       }
 
-      private boolean success_ ;
+      private long lastLogIndex_ ;
       /**
-       * <code>bool success = 2;</code>
-       * @return The success.
+       * <code>uint64 last_log_index = 3;</code>
+       * @return The lastLogIndex.
        */
       @java.lang.Override
-      public boolean getSuccess() {
-        return success_;
+      public long getLastLogIndex() {
+        return lastLogIndex_;
       }
       /**
-       * <code>bool success = 2;</code>
-       * @param value The success to set.
+       * <code>uint64 last_log_index = 3;</code>
+       * @param value The lastLogIndex to set.
        * @return This builder for chaining.
        */
-      public Builder setSuccess(boolean value) {
+      public Builder setLastLogIndex(long value) {
         
-        success_ = value;
+        lastLogIndex_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>bool success = 2;</code>
+       * <code>uint64 last_log_index = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder clearSuccess() {
+      public Builder clearLastLogIndex() {
         
-        success_ = false;
+        lastLogIndex_ = 0L;
         onChanged();
         return this;
       }
@@ -3511,12 +5927,12 @@ public final class RaftMessage {
     }
 
     // @@protoc_insertion_point(class_scope:raft.AppendEntityResponse)
-    private static final RaftMessage.AppendEntityResponse DEFAULT_INSTANCE;
+    private static final com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new RaftMessage.AppendEntityResponse();
+      DEFAULT_INSTANCE = new com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse();
     }
 
-    public static RaftMessage.AppendEntityResponse getDefaultInstance() {
+    public static com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3541,12 +5957,27 @@ public final class RaftMessage {
     }
 
     @java.lang.Override
-    public RaftMessage.AppendEntityResponse getDefaultInstanceForType() {
+    public com.dinghai.raft.core.proto.RaftMessage.AppendEntityResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_raft_Endpoint_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_raft_Endpoint_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_raft_Server_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_raft_Server_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_raft_Configuration_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_raft_Configuration_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_raft_VoteRequest_descriptor;
   private static final 
@@ -3581,53 +6012,78 @@ public final class RaftMessage {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nraft.proto\022\004raft\"]\n\013VoteRequest\022\014\n\004ter" +
-      "m\030\001 \001(\004\022\021\n\tserver_id\030\002 \001(\004\022\026\n\016last_log_i" +
-      "ndex\030\003 \001(\004\022\025\n\rlast_log_term\030\004 \001(\004\"1\n\014Vot" +
-      "eResponse\022\014\n\004term\030\001 \001(\004\022\023\n\013voteGranted\030\002" +
-      " \001(\010\"5\n\010LogEntry\022\014\n\004term\030\001 \001(\004\022\r\n\005index\030" +
-      "\002 \001(\004\022\014\n\004data\030\003 \001(\014\"\203\001\n\023AppendEntityRequ" +
-      "est\022\014\n\004term\030\001 \001(\004\022\021\n\tleader_id\030\002 \001(\004\022\026\n\016" +
-      "prev_log_index\030\003 \001(\004\022\025\n\rprev_log_term\030\004 " +
-      "\001(\004\022\034\n\004logs\030\005 \003(\0132\016.raft.LogEntry\"5\n\024App" +
-      "endEntityResponse\022\014\n\004term\030\001 \001(\004\022\017\n\007succe" +
-      "ss\030\002 \001(\010B%\n\026com.dinghai.raft.protoB\013Raft" +
-      "Messageb\006proto3"
+      "\n\nraft.proto\022\004raft\"&\n\010Endpoint\022\014\n\004host\030\001" +
+      " \001(\t\022\014\n\004port\030\002 \001(\r\"=\n\006Server\022\021\n\tserver_i" +
+      "d\030\001 \001(\r\022 \n\010endpoint\030\002 \001(\0132\016.raft.Endpoin" +
+      "t\".\n\rConfiguration\022\035\n\007servers\030\001 \003(\0132\014.ra" +
+      "ft.Server\"]\n\013VoteRequest\022\014\n\004term\030\001 \001(\004\022\021" +
+      "\n\tserver_id\030\002 \001(\004\022\026\n\016last_log_index\030\003 \001(" +
+      "\004\022\025\n\rlast_log_term\030\004 \001(\004\"-\n\014VoteResponse" +
+      "\022\014\n\004term\030\001 \001(\004\022\017\n\007granted\030\002 \001(\010\"5\n\010LogEn" +
+      "try\022\014\n\004term\030\001 \001(\004\022\r\n\005index\030\002 \001(\004\022\014\n\004data" +
+      "\030\003 \001(\014\"\231\001\n\023AppendEntityRequest\022\021\n\tserver" +
+      "_id\030\001 \001(\r\022\014\n\004term\030\002 \001(\004\022\021\n\tleader_id\030\003 \001" +
+      "(\004\022\026\n\016prev_log_index\030\004 \001(\004\022\025\n\rprev_log_t" +
+      "erm\030\005 \001(\004\022\037\n\007entries\030\006 \003(\0132\016.raft.LogEnt" +
+      "ry\"]\n\024AppendEntityResponse\022\037\n\010res_code\030\001" +
+      " \001(\0162\r.raft.ResCode\022\014\n\004term\030\002 \001(\004\022\026\n\016las" +
+      "t_log_index\030\003 \001(\004*K\n\007ResCode\022\024\n\020RES_CODE" +
+      "_SUCCESS\020\000\022\021\n\rRES_CODE_FAIL\020\001\022\027\n\023RES_COD" +
+      "E_NOT_LEADER\020\002B*\n\033com.dinghai.raft.core." +
+      "protoB\013RaftMessageb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_raft_VoteRequest_descriptor =
+    internal_static_raft_Endpoint_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_raft_Endpoint_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_raft_Endpoint_descriptor,
+        new java.lang.String[] { "Host", "Port", });
+    internal_static_raft_Server_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_raft_Server_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_raft_Server_descriptor,
+        new java.lang.String[] { "ServerId", "Endpoint", });
+    internal_static_raft_Configuration_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_raft_Configuration_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_raft_Configuration_descriptor,
+        new java.lang.String[] { "Servers", });
+    internal_static_raft_VoteRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_raft_VoteRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_raft_VoteRequest_descriptor,
         new java.lang.String[] { "Term", "ServerId", "LastLogIndex", "LastLogTerm", });
     internal_static_raft_VoteResponse_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_raft_VoteResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_raft_VoteResponse_descriptor,
-        new java.lang.String[] { "Term", "VoteGranted", });
+        new java.lang.String[] { "Term", "Granted", });
     internal_static_raft_LogEntry_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_raft_LogEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_raft_LogEntry_descriptor,
         new java.lang.String[] { "Term", "Index", "Data", });
     internal_static_raft_AppendEntityRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_raft_AppendEntityRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_raft_AppendEntityRequest_descriptor,
-        new java.lang.String[] { "Term", "LeaderId", "PrevLogIndex", "PrevLogTerm", "Logs", });
+        new java.lang.String[] { "ServerId", "Term", "LeaderId", "PrevLogIndex", "PrevLogTerm", "Entries", });
     internal_static_raft_AppendEntityResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_raft_AppendEntityResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_raft_AppendEntityResponse_descriptor,
-        new java.lang.String[] { "Term", "Success", });
+        new java.lang.String[] { "ResCode", "Term", "LastLogIndex", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
